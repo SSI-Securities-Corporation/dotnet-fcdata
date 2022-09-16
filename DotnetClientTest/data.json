@@ -1,0 +1,42 @@
+{
+  "url": "https://fc-data.ssi.com.vn",
+  "streaming_url": "https://fc-data.ssi.com.vn",
+  "consumerId": "2c7c511d4eb940d6a8b09aaef5711654",
+  "consumerSecret": "bce8d1b486e94a99b96ba7e9f6169fbd",
+
+  "channels": "X:ALL",
+  "SecuritiesListRequest": {
+    "market": "HOSE"
+  },
+  "SecuritiesDetailsRequest": {
+    "market": "HOSE",
+    "symbol": "SSI"
+  },
+  "IndexComponentRequest": {
+    "indexCode": "VN30"
+  },
+  "IndexListRequest": {
+    "exchange": "HOSE"
+  },
+  "DailyOhlcRequest": {
+    "symbol": "SSI",
+    "fromDate": "17/08/2022",
+    "toDate": "18/08/2022"
+  },
+  "IntradayOhlcRequest": {
+    "symbol": "SSI",
+    "fromDate": "17/08/2022",
+    "toDate": "18/08/2022",
+    "resolution": 60
+  },
+  "DailyIndexRequest": {
+    "indexId": "VN30",
+    "fromDate": "16/08/2022",
+    "toDate": "18/08/2022"
+  },
+  "StockPriceRequest": {
+    "symbol": "SSI",
+    "fromDate": "17/08/2022",
+    "toDate": "18/08/2022"
+  }
+}

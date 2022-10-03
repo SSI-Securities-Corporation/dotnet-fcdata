@@ -45,8 +45,11 @@ namespace SSI.FastConnect.DataContracts.Market.Request
                 FromDate = "11/11/2019",
                 Order = "SAMPLE",
                 OrderBy = "SAMPLE",
-                RequestId = "SAMPLE"
+                RequestId = "SAMPLE",
+                ascending = "true"
             };
         }
+        [DataMember(Order = 8, Name = "ascending")]
+        public string ascending { set; get; }
     }
 }

@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Serilog;
 using SSI.FastConnect.Client.Helpers;
 using SSI.FastConnect.Client.Models;
 
@@ -16,11 +17,11 @@ namespace SSI.FastConnect.Client
         private readonly string _consumerSecret;
         private readonly string _consumerId;
         private readonly string _consumerPublicKey;
-        private readonly log4net.ILog _logger = null;
+        private readonly ILogger _logger = null;
 
         public ServiceProcessor() { }
 
-        private ServiceProcessor(string url, string consumerId, string consumerSecret, string consumerPublicKey, log4net.ILog logger = null)
+        private ServiceProcessor(string url, string consumerId, string consumerSecret, string consumerPublicKey, ILogger logger = null)
         {
             _apiUrl = url;
             _consumerId = consumerId;
@@ -29,7 +30,7 @@ namespace SSI.FastConnect.Client
             _logger = logger;
         }
 
-        public ServiceProcessor GetInstance(string url, string consumerId, string consumerSecret, string consumerPublicKey, log4net.ILog logger = null)
+        public ServiceProcessor GetInstance(string url, string consumerId, string consumerSecret, string consumerPublicKey, ILogger logger = null)
         {
             return new ServiceProcessor(url, consumerId, consumerSecret, consumerPublicKey);
         }

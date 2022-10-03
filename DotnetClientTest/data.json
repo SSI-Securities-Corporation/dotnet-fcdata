@@ -1,42 +1,57 @@
 {
-  "url": "https://fc-data.ssi.com.vn",
-  "streaming_url": "https://fc-data.ssi.com.vn",
-  "consumerId": "2c7c511d4eb940d6a8b09aaef5711654",
-  "consumerSecret": "bce8d1b486e94a99b96ba7e9f6169fbd",
-
   "channels": "X:ALL",
   "SecuritiesListRequest": {
-    "market": "HOSE"
+    "market": "HOSE",
+    "pageIndex": "1",
+    "pageSize": "10"
   },
   "SecuritiesDetailsRequest": {
     "market": "HOSE",
-    "symbol": "SSI"
+    "symbol": "SSI",
+    "pageIndex": "1",
+    "pageSize": "10"
   },
   "IndexComponentRequest": {
-    "indexCode": "VN30"
+    "indexCode": "VN30",
+    "pageIndex": "1",
+    "pageSize": "10"
   },
   "IndexListRequest": {
-    "exchange": "HOSE"
+    "exchange": "HOSE",
+    "pageIndex": "1",
+    "pageSize": "10"
   },
   "DailyOhlcRequest": {
     "symbol": "SSI",
-    "fromDate": "17/08/2022",
-    "toDate": "18/08/2022"
+    "fromDate": "01/08/2022",
+    "toDate": "02/08/2022",
+    "ascending": "true",
+    "pageIndex": "1",
+    "pageSize": "10"
   },
   "IntradayOhlcRequest": {
     "symbol": "SSI",
-    "fromDate": "17/08/2022",
-    "toDate": "18/08/2022",
-    "resolution": 60
+    "fromDate": "03/08/2022",
+    "toDate": "04/08/2022",
+    "resolution": 60,
+    "pageIndex": "1",
+    "pageSize": "10",
+    "ascending": "true"
   },
   "DailyIndexRequest": {
     "indexId": "VN30",
     "fromDate": "16/08/2022",
-    "toDate": "18/08/2022"
+    "toDate": "18/08/2022",
+    "pageIndex": "1",
+    "pageSize": "10",
+    "ascending": "true"
   },
   "StockPriceRequest": {
     "symbol": "SSI",
+    "market": "HOSE",
     "fromDate": "17/08/2022",
-    "toDate": "18/08/2022"
+    "toDate": "19/08/2022",
+    "pageIndex": "1",
+    "pageSize": "10"
   }
 }

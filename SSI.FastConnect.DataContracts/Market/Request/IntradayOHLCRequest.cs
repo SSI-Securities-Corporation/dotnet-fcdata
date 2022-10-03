@@ -26,7 +26,7 @@ namespace SSI.FastConnect.DataContracts.Market.Request
         [HelpDescription("Size of a page, 10; 20; 50; 100; 1000 Default 10 ", false)]
         public int PageSize { get; set; } = 10000;
 
-        [DataMember(Order = 6, Name = "Resolution ")]
+        [DataMember(Order = 6, Name = "Resolution")]
         [HelpDescription("1S, 1P ,5P ,15P ,30P ,1H", false)]
         public int Resolution { get; set; } = 10;
 
@@ -36,8 +36,13 @@ namespace SSI.FastConnect.DataContracts.Market.Request
             {
                 Symbol = "SAMPLE",
                 FromDate = "11/11/2019",
-                ToDate = "11/12/2019"
+                ToDate = "11/12/2019",
+                PageIndex = 1,
+                PageSize = 100,
+                ascending = "true",
             };
         }
+        [DataMember(Order = 7, Name = "ascending")]
+        public string ascending { get; set; }
     }
 }

@@ -49,6 +49,9 @@
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.11.1-dev-01397\lib\net45\Serilog.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.4.0.0\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
     <Reference Include="SSI.TradingAPI.Client">
       <HintPath>..\libs\SSI.TradingAPI.Client.dll</HintPath>
     </Reference>
@@ -74,7 +77,7 @@
     <Compile Include="TradingStreamingClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

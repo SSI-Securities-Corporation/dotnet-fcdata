@@ -12,6 +12,8 @@ using SSI.FastConnect.Client.Helpers;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Collections.Generic;
+using Serilog;
+
 namespace DotnetClientTest
 {
     public class Program
@@ -40,38 +42,47 @@ namespace DotnetClientTest
                 {
                     case ConsoleKey.NumPad1:
                     case ConsoleKey.D1:
+                        Console.WriteLine(1);
                         resource.TestSecuritiesList();
                         break;
                     case ConsoleKey.NumPad2:
                     case ConsoleKey.D2:
+                        Console.WriteLine(2);
                         resource.TestSecuritiesDetail();
                         break;
                     case ConsoleKey.NumPad3:
                     case ConsoleKey.D3:
+                        Console.WriteLine(3);
                         resource.TestIndexComponent();
                         break;
                     case ConsoleKey.NumPad4:
                     case ConsoleKey.D4:
+                        Console.WriteLine(4);
                         resource.TestIndexList();
                         break;
                     case ConsoleKey.NumPad5:
                     case ConsoleKey.D5:
+                        Console.WriteLine(5);
                         resource.TestDailyOHLC();
                         break;
                     case ConsoleKey.NumPad6:
                     case ConsoleKey.D6:
+                        Console.WriteLine(6);
                         resource.TestIntradayOHLC();
                         break;
                     case ConsoleKey.NumPad7:
                     case ConsoleKey.D7:
+                        Console.WriteLine(7);
                         resource.TestDailyIndex();
                         break;
                     case ConsoleKey.NumPad8:
                     case ConsoleKey.D8:
+                        Console.WriteLine(8);
                         resource.TestDailyStockPrice();
                         break;
                     case ConsoleKey.NumPad9:
                     case ConsoleKey.D9:
+                        Console.WriteLine(9);
                         break;
                     default:
                         break;

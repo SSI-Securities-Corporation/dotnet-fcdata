@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Serilog;
 using SSI.FastConnect.Client.Models;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,13 @@ namespace SSI.FastConnect.Client
         private readonly string _consumerId;
         //private readonly string _consumerPublicKey;
         //private readonly string _accessToken;
-        private readonly log4net.ILog _logger = null;
+        private readonly ILogger _logger = null;
 
         private static string _accessToken = string.Empty;
         private static long _tokenTime = 0;
         private static long _tokenTimeExpiry = Convert.ToInt32(ConfigurationManager.AppSettings["ExpiryTimeToken"]); 
 
-        private ServiceProcessorV2(string url, string consumerId, string consumerSecret, /*string consumerPublicKey, string accessToken,*/ log4net.ILog logger = null)
+        private ServiceProcessorV2(string url, string consumerId, string consumerSecret, /*string consumerPublicKey, string accessToken,*/ ILogger logger = null)
         {
             _apiUrl = url;
             _consumerId = consumerId;
@@ -40,9 +41,9 @@ namespace SSI.FastConnect.Client
         {
         }
 
-        public ServiceProcessorV2 GetInstance(string url, string consumerId, string consumerSecret, /*string consumerPublicKey, string accessToken,*/ log4net.ILog logger = null)
+        public ServiceProcessorV2 GetInstance(string url, string consumerId, string consumerSecret, /*string consumerPublicKey, string accessToken,*/ ILogger logger = null)
         {
-            return new ServiceProcessorV2(url, consumerId, consumerSecret/*, consumerPublicKey, accessToken*/);
+            return new ServiceProcessorV2(url, consumerId, consumerSecret/*, consumerPublicKey, accessToken*/, logger);
         }
 
         public async Task<ResponseClient<TResponse>> Post<TRequest, TResponse>(string query, string apiName)
@@ -89,8 +90,8 @@ namespace SSI.FastConnect.Client
             }
             catch (Exception ex)
             {
-                _logger?.Fatal("Error", ex);
-                throw ex;
+                _logger?.Error(ex.Message, ex);
+                return new ResponseClient<TResponse>();
             }
         }
 
@@ -160,7 +161,7 @@ namespace SSI.FastConnect.Client
                 {
                     response.StatusCode = (int)res.StatusCode;
                     response.Message = res.ReasonPhrase;
-                    _logger.Error(res?.StatusCode.ToString());
+                    _logger.Error( $"status {(int)res.StatusCode}");
                     _logger.Error(res?.Content.ToString());
                     _logger.Error(res?.ReasonPhrase);
                 }
@@ -168,7 +169,7 @@ namespace SSI.FastConnect.Client
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
+                _logger.Error(ex, ex.Message);
                 throw;
             }
 

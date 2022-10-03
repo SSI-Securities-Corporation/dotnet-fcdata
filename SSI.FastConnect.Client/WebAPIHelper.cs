@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Serilog;
 using SSI.FastConnect.Client.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace SSI.FastConnect.Client
             //_cache = memoryCache;
         }
 
-        public static async Task<string> GetTokenAsync(string requestUri, string ConsumerId, string ConsumerSecret, log4net.ILog _logger)
+        public static async Task<string> GetTokenAsync(string requestUri, string ConsumerId, string ConsumerSecret, ILogger _logger)
         {
             var accessTokenResponse = new SingleResponse<AccessTokenResponse>();
             try
@@ -57,7 +58,7 @@ namespace SSI.FastConnect.Client
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
+                _logger.Error(ex, ex.Message);
             }
 
             return null;

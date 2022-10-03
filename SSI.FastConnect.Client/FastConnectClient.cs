@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
+using Serilog;
 using SSI.FastConnect.Client.Models;
 
 namespace SSI.FastConnect.Client
@@ -10,7 +11,7 @@ namespace SSI.FastConnect.Client
         public string Message { get; set; }
         private readonly ServiceProcessor _processor;
 
-        public FastConnectClient(string apiUrl, string conId, string conSecret, string pubKey, log4net.ILog logger = null)
+        public FastConnectClient(string apiUrl, string conId, string conSecret, string pubKey, ILogger logger = null)
         {
             _processor = new ServiceProcessor().GetInstance(apiUrl, conId, conSecret, pubKey, logger);
         }

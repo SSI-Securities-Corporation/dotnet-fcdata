@@ -26,18 +26,22 @@ namespace SSI.FastConnect.RealTimeClient
         private event OnReceived _onBroadcast;
         private event OnReceived _onError;
         private Timer ReconnectTimer;
-        public MarketDataStreamingClientV2(string url, AuthenProvider authenProvider, ILogger logger = null)
+        private string _channelSub;
+        public MarketDataStreamingClientV2(string url, string channelSub, AuthenProvider authenProvider, ILogger logger = null)
         {
             _url = url;
             _authenticationProvider = authenProvider;
             _logger = logger;
+            _channelSub = channelSub;
         }
-        private void CreateHubClient(string accessToken, CancellationToken cancellationToken = default)
+        private async void CreateHubClient(string accessToken, CancellationToken cancellationToken = default)
         {
             _logger?.Information("Create hub connection with accesssToken: {0}", accessToken);
             _hubConnection = new HubConnection(_url);
             _hubConnection.Headers.Add("Authorization", "Bearer " + accessToken);
             _hubProxy = _hubConnection.CreateHubProxy(HUB_NAME);
+
+
             _hubProxy.On<string>("Broadcast", On_Broadcast);
             _hubProxy.On<string>("Error", On_Error);
             _hubConnection.StateChanged += On_StateChanged;
@@ -46,7 +50,7 @@ namespace SSI.FastConnect.RealTimeClient
         {
             ReconnectTimer = new Timer((state) =>
             {
-                _logger?.Information("Reconect to TAPI stream!");
+                _logger?.Information("Reconect to FcData stream!");
                 Start().Wait();
             }, null, seconds * 1000, Timeout.Infinite);
         }
@@ -88,6 +92,7 @@ namespace SSI.FastConnect.RealTimeClient
             try
             {
                 _onBroadcast?.Invoke(data);
+                _logger.Information(data);
             }
             catch (Exception ex)
             {

@@ -32,8 +32,14 @@ namespace SSI.FastConnect.DataContracts.Market.Request
             {
                 Symbol = "SSI",
                 FromDate = "11/11/2019",
-                ToDate = "11/12/2019"
+                ToDate = "11/12/2019",
+                PageIndex = 1,
+                PageSize = 100,
+                ascending = "true"
             };
         }
+
+        [DataMember(Order = 6, Name = "ascending")]
+        public string ascending { set; get; }
     }
 }

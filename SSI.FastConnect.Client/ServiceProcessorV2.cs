@@ -25,7 +25,7 @@ namespace SSI.FastConnect.Client
 
         private static string _accessToken = string.Empty;
         private static long _tokenTime = 0;
-        private static long _tokenTimeExpiry = Convert.ToInt32(ConfigurationManager.AppSettings["ExpiryTimeToken"]); 
+        private static long _tokenTimeExpiry = 4;
 
         private ServiceProcessorV2(string url, string consumerId, string consumerSecret, /*string consumerPublicKey, string accessToken,*/ ILogger logger = null)
         {

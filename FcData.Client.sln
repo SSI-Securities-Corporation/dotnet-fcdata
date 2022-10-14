@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetClientUnitTest", "DotnetClientTest\DotnetClientUnitTest.csproj", "{29A234DD-5C85-4901-BF94-9E7DC3CCE41F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.Client", "SSI.FastConnect.Client\SSI.FastConnect.Client.csproj", "{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSI.FastConnect.Client", "SSI.FastConnect.Client\SSI.FastConnect.Client.csproj", "{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.DataContract", "SSI.FastConnect.DataContracts\SSI.FastConnect.DataContract.csproj", "{ABB876DC-3BFB-479E-954E-62EA885C15BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSI.FastConnect.DataContract", "SSI.FastConnect.DataContracts\SSI.FastConnect.DataContract.csproj", "{ABB876DC-3BFB-479E-954E-62EA885C15BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.Client.Realtime.Sample", "SSI.FastConnect.Client.Realtime.Sample\SSI.FastConnect.Client.Realtime.Sample.csproj", "{E1AD847F-DD49-4EEF-A1C2-D163D6407A0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSI.FastConnect.Client.Realtime.Sample", "SSI.FastConnect.Client.Realtime.Sample\SSI.FastConnect.Client.Realtime.Sample.csproj", "{E1AD847F-DD49-4EEF-A1C2-D163D6407A0B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSI.FastConnect.RealTimeClient", "SSI.FastConnect.RealTimeClient\SSI.FastConnect.RealTimeClient.csproj", "{FB112479-5AEA-41C6-AB22-167C09C8A371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.RealTimeClient", "SSI.FastConnect.RealTimeClient\SSI.FastConnect.RealTimeClient.csproj", "{FB112479-5AEA-41C6-AB22-167C09C8A371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{29A234DD-5C85-4901-BF94-9E7DC3CCE41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29A234DD-5C85-4901-BF94-9E7DC3CCE41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29A234DD-5C85-4901-BF94-9E7DC3CCE41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29A234DD-5C85-4901-BF94-9E7DC3CCE41F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}.Release|Any CPU.ActiveCfg = Release|Any CPU

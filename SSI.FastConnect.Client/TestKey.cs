@@ -27,6 +27,7 @@ namespace SSI.FastConnect.Client
         ACCOUNTBALANCE,
         DERACCOUNTBALANCE,
         ORDERHISTORIES,
+        STREAM
     }
 
     public class TestKey : Attribute

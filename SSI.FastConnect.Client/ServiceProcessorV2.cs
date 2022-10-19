@@ -123,7 +123,7 @@ namespace SSI.FastConnect.Client
             {
                 var datetimeNow = (long)DateTime.Now.ToUniversalTime().Subtract(
                 new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
-                ).TotalMilliseconds;
+                ).TotalSeconds;
                 var timeSpanNumber = _tokenTime - datetimeNow;
                 if (timeSpanNumber <= 0) return false;
 

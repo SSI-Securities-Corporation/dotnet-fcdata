@@ -11,22 +11,18 @@ namespace SSI.FastConnect.Client
     public class FastConnectClientV2
     {
         public string Message { get; set; }
-        private readonly ServiceProcessorV2 _processor;
+        private ServiceProcessorV2 _processor;
 
-        private static ILogger _logger = new LoggerConfiguration()
-          .MinimumLevel.Warning()
-          .WriteTo.Console(outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
-          .CreateLogger();
-
-        public FastConnectClientV2(string apiUrl, string conId, string conSecret)
+        public FastConnectClientV2()
         {
-            _processor = new ServiceProcessorV2().GetInstance(apiUrl, conId, conSecret, _logger);
+            
         }
 
-        public async Task<ResponseClient<TResponse>> Get<TRequest, TResponse>(string query, string apiPath)
+        public async Task<ResponseClient<TResponse>> Get<TRequest, TResponse>(string query, string apiPath, string apiUrl, string conId, string conSecret, ILogger logger)
             where TRequest : class
             where TResponse : class
         {
+            _processor = new ServiceProcessorV2().GetInstance(apiUrl, conId, conSecret, logger);
             var res = await _processor.Post<string, TResponse>(query, apiName: apiPath);
             return res;
         }

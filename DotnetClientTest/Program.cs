@@ -1,28 +1,24 @@
 ﻿using System;
-using SSI.FastConnect.Client;
-using System.Threading;
-using Microsoft.AspNet.SignalR.Client;
-using Newtonsoft.Json;
-using SSI.FastConnect.DataContracts.Realtime;
-using SSI.FastConnect.RealTimeClient;
 using System.IO;
-using SSI.FastConnect.DataContracts.Market.Request;
-using SSI.FastConnect.DataContracts.Market.Response;
-using SSI.FastConnect.Client.Helpers;
-using Newtonsoft.Json.Linq;
-using System.Linq;
-using System.Collections.Generic;
-using Serilog;
+using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace DotnetClientTest
 {
     public class Program
     {
-
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
-            var resource = new ResourceTestTemplateV2();
+            var builder = new ConfigurationBuilder()
+                               .SetBasePath(Directory.GetCurrentDirectory())
+                               .AddNewtonsoftJsonFile("data.json", true, reloadOnChange: true);
+            var configuration = builder.Build();
+
+            var logger = MyLogger.CreateLogger();
+            var resource = new ResourceTestTemplateV2(configuration, logger);
+
         LoopStart:
+            Console.WriteLine("0. Stream with FCData");
             Console.WriteLine("1. SecuritiesRequest");
             Console.WriteLine("2. SecuritiesDetailRequest");
             Console.WriteLine("3. IndexComponentsRequest");
@@ -35,11 +31,16 @@ namespace DotnetClientTest
 
         LoopReadKey:
             var getKey = Console.ReadKey(true).Key;
-            bool condition = (getKey >= ConsoleKey.NumPad0 && getKey <= ConsoleKey.NumPad9) || (getKey >= ConsoleKey.D1 && getKey <= ConsoleKey.D9);
+            bool condition = (getKey >= ConsoleKey.NumPad0 && getKey <= ConsoleKey.NumPad9) || (getKey >= ConsoleKey.D0 && getKey <= ConsoleKey.D9);
             if (condition)
             {
                 switch (getKey)
                 {
+                    case ConsoleKey.NumPad0:
+                    case ConsoleKey.D0:
+                        Console.WriteLine(0);
+                        await resource.TestStreamData();
+                        break;
                     case ConsoleKey.NumPad1:
                     case ConsoleKey.D1:
                         Console.WriteLine(1);
@@ -101,5 +102,6 @@ namespace DotnetClientTest
                 goto LoopStart;
             }
         }
+
     }
 }

@@ -1,5 +1,10 @@
 {
-  "channels": "X:ALL",
+  "FastConnectUrl": "http://192.168.213.98:1189",
+  "StreamURL": "http://192.168.213.98:1188/v2.0/signalr",
+  "ChannelSub": "X:ALL",
+  "FastConnectId": "2de7719328db43ffbafc3226056a6ae2",
+  "FastConnectSecret": "3a05e2d237934a7f9ae40b252f5cebd0",
+  "FastConnectPublicKey": "PFJTQUtleVZhbHVlPjxNb2R1bHVzPnQ4ZW5UaEx4dmVqN2Q1NlV5QkpaZXBwbVFiTVBudWFxRjBNbVBmOFJXc0h6OG1jRExqL3pIQkx2aXBvNU5lNHlzbDV0cmw3cTlqdm1ldlZUV2dscFlGRVd3UnVEQ1pXODF6TWVHUEI2cFU1cVh2RC9HdkRaM09PTVY0VFVvTTBXYUJHNDR5SXNXRHVEeHNZb2tubm92S01udTk4bk91TUxkWU9Xc3J2S3FUaz08L01vZHVsdXM+PEV4cG9uZW50PkFRQUI8L0V4cG9uZW50PjwvUlNBS2V5VmFsdWU+",
   "SecuritiesListRequest": {
     "market": "HOSE",
     "pageIndex": "1",

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;net46;net47;net5.0;net6.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SSI.FastConnect.DataContracts</RootNamespace>
+    <AssemblyName>SSI.FastConnect.DataContracts</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Realtime\TradingStreaming\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.6.0" />
+    <PackageReference Include="protobuf-net" Version="2.4.4" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+    <PackageReference Include="Unity" Version="5.11.1" />
+  </ItemGroup>
+</Project>

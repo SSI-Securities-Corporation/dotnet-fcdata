@@ -27,8 +27,8 @@
         public const string IsRunAPIMarketData = "IsRunAPIMarketData";
         public const string SubscribeValue = "SubscribeValue";
         public const string FastConnectPublicKey = "FastConnectPublicKey";
-        public const string FastConnectSecret = "FastConnectSecret";
-        public const string FastConnectId = "FastConnectId";
+        public const string FastConnectSecret = "ConsumerSecret";
+        public const string FastConnectId = "ConsumerId";
         public const string FCStreamTradingUrl = "FCStreamTradingUrl";
         public const string FCTradingUrl = "FCTradingUrl";
         public const string GetDailyOhlc = "Market/GetDailyOHLC";
@@ -46,6 +46,7 @@
         public const string GetIndexComponents = "/api/v2/Market/IndexComponents";
         public const string GetIndexList = "/api/v2/Market/IndexList";
         public const string GetDailyStockPrice = "/api/v2/Market/DailyStockPrice";
+        public const string IntradayByTick = "/api/v2/Market/IntradaybyTick";
     }
 
 

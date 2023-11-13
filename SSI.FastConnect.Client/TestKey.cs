@@ -15,6 +15,7 @@ namespace SSI.FastConnect.Client
         INTRADAY_OHLC,
         DAILY_INDEX,
         DAILY_STOCK_PRICE,
+        INTRADAY_BY_TICK,
         CLIENT,
 
         NEWORDER,
@@ -52,6 +53,7 @@ namespace SSI.FastConnect.Client
             {"api/v2/Market/GetIntradayOHLC",TemplateKey.INTRADAY_OHLC},
             {"api/v2/Market/GetDailyIndex",TemplateKey.DAILY_INDEX},
             {"api/v2/Market/GetDailyStockPrice",TemplateKey.DAILY_STOCK_PRICE},
+            {"api/v2/Market/DailyStockPrice",TemplateKey.INTRADAY_BY_TICK},
 
             {"api/v2/Trading/NewOrder",TemplateKey.NEWORDER},
             {"api/v2/Trading/ModifyOrder",TemplateKey.MODIFYORDER},

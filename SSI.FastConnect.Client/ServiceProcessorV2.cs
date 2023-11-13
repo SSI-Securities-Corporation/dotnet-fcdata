@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +28,7 @@ namespace SSI.FastConnect.Client
         private static string _accessToken = string.Empty;
         private static long _tokenTime = 0;
         private static long _tokenTimeExpiry = 4;
+
 
         private ServiceProcessorV2(string url, string consumerId, string consumerSecret, /*string consumerPublicKey, string accessToken,*/ ILogger logger = null)
         {
@@ -53,7 +56,7 @@ namespace SSI.FastConnect.Client
             var response = new ResponseClient<TResponse>();
             try
             {
-                _logger?.Debug("Start validate API key.");
+                //_logger?.Debug("Start validate API key.");
                 if (string.IsNullOrWhiteSpace(_consumerId))
                 {
                     throw new ArgumentException("Cannot find ConsumerId in application configuration");
@@ -82,8 +85,8 @@ namespace SSI.FastConnect.Client
                 {
                     throw new ArgumentException("query request is required");
                 }
-                _logger?.Debug("Validate api key successful!");
-                _logger?.Debug("Start make request. Encrypting request data...");
+                //_logger?.Debug("Validate api key successful!");
+                //_logger?.Debug("Start make request. Encrypting request data...");
 
                 var result = await HandlerRequest(response, apiName, query);
                 return result;
@@ -99,10 +102,24 @@ namespace SSI.FastConnect.Client
         {
             if (!CheckTokenLifeTime())
             {
+                //try
+                //{
+                //    _accessToken = await WebAPIHelper.GetTokenAsync(_apiUrl, _consumerId, _consumerSecret, _logger);
+                //    if (string.IsNullOrEmpty(_accessToken)) throw new ArgumentException("token is null");
+                //    var handler = new JwtSecurityTokenHandler();
+                //    var jsonToken = handler.ReadToken(_accessToken);
+                //    var tokenS = jsonToken as JwtSecurityToken;
+                //    var exp = tokenS.Claims.First(claim => claim.Type == "exp").Value;
+                //    _tokenTime = long.Parse(exp);
+                //}
+                //catch (Exception ex)
+                //{
+                //    _logger.Error("Failed to get access token", ex);
+                //    throw ex;
+                //}
                 try
                 {
-                    _accessToken = await WebAPIHelper.GetTokenAsync(_apiUrl, _consumerId, _consumerSecret, _logger);
-                    if (string.IsNullOrEmpty(_accessToken)) throw new ArgumentException("token is null");
+                    _accessToken = await TakeAccessToken();
                     var handler = new JwtSecurityTokenHandler();
                     var jsonToken = handler.ReadToken(_accessToken);
                     var tokenS = jsonToken as JwtSecurityToken;
@@ -111,11 +128,36 @@ namespace SSI.FastConnect.Client
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error("Failed to get access token", ex);
+                    _logger?.Error(ex, "Failed to get access token");
                     throw ex;
                 }
             }
 
+        }
+
+        private async Task<string> TakeAccessToken()
+        {
+            using (var client = new HttpClient())
+            {
+                var accessTokenRequest = new AccessTokenRequest()
+                {
+                    ConsumerID = _consumerId,
+                    ConsumerSecret = _consumerSecret
+                };
+
+                var postJsonItem = new StringContent(JsonConvert.SerializeObject(accessTokenRequest), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(_apiUrl + ApiDefineV2.AccessToken, postJsonItem);
+
+                response.EnsureSuccessStatusCode();
+                var data = JsonConvert.DeserializeObject<SingleResponse<AccessTokenResponse>>(await response.Content.ReadAsStringAsync());
+                if (data.status == (int)HttpStatusCode.OK)
+                {
+
+                    return data.data.accessToken;
+                }
+                else
+                    throw new HttpRequestException(data.message);
+            }
         }
         private bool CheckTokenLifeTime()
         {
@@ -152,7 +194,7 @@ namespace SSI.FastConnect.Client
                 var url = builder.ToString();
                 var res = await client.GetAsync(url);
                 var content = await res.Content.ReadAsStringAsync();
-                if (res.IsSuccessStatusCode)
+                if (!String.IsNullOrEmpty(content))
                 {
                     response.StatusCode = (int)res.StatusCode;
                     response.DeserializeObj = JsonConvert.DeserializeObject<TResponse>(content);
@@ -161,7 +203,7 @@ namespace SSI.FastConnect.Client
                 {
                     response.StatusCode = (int)res.StatusCode;
                     response.Message = res.ReasonPhrase;
-                    _logger.Error( $"status {(int)res.StatusCode}");
+                    _logger.Error($"status {(int)res.StatusCode}");
                     _logger.Error(res?.Content.ToString());
                     _logger.Error(res?.ReasonPhrase);
                 }

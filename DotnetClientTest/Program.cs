@@ -12,96 +12,99 @@ namespace DotnetClientTest
             var builder = new ConfigurationBuilder()
                                .SetBasePath(Directory.GetCurrentDirectory())
                                .AddNewtonsoftJsonFile("data.json", true, reloadOnChange: true);
+
             var configuration = builder.Build();
 
             var logger = MyLogger.CreateLogger();
             var resource = new ResourceTestTemplateV2(configuration, logger);
 
-        LoopStart:
-            Console.WriteLine("0. Stream with FCData");
-            Console.WriteLine("1. SecuritiesRequest");
-            Console.WriteLine("2. SecuritiesDetailRequest");
-            Console.WriteLine("3. IndexComponentsRequest");
-            Console.WriteLine("4. IndexListRequest");
-            Console.WriteLine("5. DailyOhlcRequest");
-            Console.WriteLine("6. IntradayOhlcRequest");
-            Console.WriteLine("7. DailyIndexRequest");
-            Console.WriteLine("8. DailyStockPriceRequest");
-            Console.WriteLine("9. Exit");
-
-        LoopReadKey:
-            var getKey = Console.ReadKey(true).Key;
-            bool condition = (getKey >= ConsoleKey.NumPad0 && getKey <= ConsoleKey.NumPad9) || (getKey >= ConsoleKey.D0 && getKey <= ConsoleKey.D9);
-            if (condition)
+            while (true)
             {
-                switch (getKey)
+                Console.WriteLine("1. FCData Streaming");
+                Console.WriteLine("2. FCData API");
+                Console.WriteLine("3. Exit");
+                var command = Console.ReadLine();
+
+                switch (command)
                 {
-                    case ConsoleKey.NumPad0:
-                    case ConsoleKey.D0:
-                        Console.WriteLine(0);
+                    case "1":
                         await resource.TestStreamData();
                         break;
-                    case ConsoleKey.NumPad1:
-                    case ConsoleKey.D1:
-                        Console.WriteLine(1);
-                        resource.TestSecuritiesList();
+                    case "2":
+                        FCDataAPI();
                         break;
-                    case ConsoleKey.NumPad2:
-                    case ConsoleKey.D2:
-                        Console.WriteLine(2);
-                        resource.TestSecuritiesDetail();
-                        break;
-                    case ConsoleKey.NumPad3:
-                    case ConsoleKey.D3:
-                        Console.WriteLine(3);
-                        resource.TestIndexComponent();
-                        break;
-                    case ConsoleKey.NumPad4:
-                    case ConsoleKey.D4:
-                        Console.WriteLine(4);
-                        resource.TestIndexList();
-                        break;
-                    case ConsoleKey.NumPad5:
-                    case ConsoleKey.D5:
-                        Console.WriteLine(5);
-                        resource.TestDailyOHLC();
-                        break;
-                    case ConsoleKey.NumPad6:
-                    case ConsoleKey.D6:
-                        Console.WriteLine(6);
-                        resource.TestIntradayOHLC();
-                        break;
-                    case ConsoleKey.NumPad7:
-                    case ConsoleKey.D7:
-                        Console.WriteLine(7);
-                        resource.TestDailyIndex();
-                        break;
-                    case ConsoleKey.NumPad8:
-                    case ConsoleKey.D8:
-                        Console.WriteLine(8);
-                        resource.TestDailyStockPrice();
-                        break;
-                    case ConsoleKey.NumPad9:
-                    case ConsoleKey.D9:
-                        Console.WriteLine(9);
+                    case "3":
                         break;
                     default:
                         break;
 
                 }
 
-                if (!(getKey == ConsoleKey.NumPad9 || getKey == ConsoleKey.D9))
-                {
-                    goto LoopReadKey;
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("----- enter key number  ------------");
-                goto LoopStart;
             }
         }
+        public static async void FCDataAPI()
+        {
+            var builder = new ConfigurationBuilder()
+                               .SetBasePath(Directory.GetCurrentDirectory())
+                               .AddNewtonsoftJsonFile("data.json", true, reloadOnChange: true);
 
+            var configuration = builder.Build();
+
+            var logger = MyLogger.CreateLogger();
+            var resource = new ResourceTestTemplateV2(configuration, logger);
+            var isCheck = true;
+            while (true)
+            {
+                Console.WriteLine("1. SecuritiesRequest");
+                Console.WriteLine("2. SecuritiesDetailRequest");
+                Console.WriteLine("3. IndexComponentsRequest");
+                Console.WriteLine("4. IndexListRequest");
+                Console.WriteLine("5. DailyOhlcRequest");
+                Console.WriteLine("6. IntradayOhlcRequest");
+                Console.WriteLine("7. DailyIndexRequest");
+                Console.WriteLine("8. DailyStockPriceRequest");
+                //Console.WriteLine("9. IntradayByTickRequest");
+                Console.WriteLine("10. Exit");
+                var command = Console.ReadLine();
+
+                switch (command)
+                {
+                    case "1":
+                        resource.TestSecuritiesList();
+                        break;
+                    case "2":
+                        resource.TestSecuritiesDetail();
+                        break;
+                    case "3":
+                        resource.TestIndexComponent();
+                        break;
+                    case "4":
+                        resource.TestIndexList();
+                        break;
+                    case "5":
+                        resource.TestDailyOHLC();
+                        break;
+                    case "6":
+                        resource.TestIntradayOHLC();
+                        break;
+                    case "7":
+                        resource.TestDailyIndex();
+                        break;
+                    case "8":
+                        resource.TestDailyStockPrice();
+                        break;
+                    /*case "9":
+                        resource.TestIntradayByTick();
+                        break;*/
+                    case "10":
+                        return;
+                    default:
+                        Console.WriteLine("Input again!");
+                        return;
+
+                }
+            }
+        }
     }
 }
+

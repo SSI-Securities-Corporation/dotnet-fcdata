@@ -39,10 +39,10 @@ namespace SSI.FastConnect.DataContracts.Market.Request
                 ToDate = "11/12/2019",
                 PageIndex = 1,
                 PageSize = 100,
-                ascending = "true",
+                ascending = false,
             };
         }
         [DataMember(Order = 7, Name = "ascending")]
-        public string ascending { get; set; }
+        public bool ascending { get; set; } = false;
     }
 }

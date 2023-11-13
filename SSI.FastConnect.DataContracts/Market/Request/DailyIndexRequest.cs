@@ -46,10 +46,10 @@ namespace SSI.FastConnect.DataContracts.Market.Request
                 Order = "SAMPLE",
                 OrderBy = "SAMPLE",
                 RequestId = "SAMPLE",
-                ascending = "true"
+                ascending = false
             };
         }
         [DataMember(Order = 8, Name = "ascending")]
-        public string ascending { set; get; }
+        public bool ascending { set; get; } = false;
     }
 }

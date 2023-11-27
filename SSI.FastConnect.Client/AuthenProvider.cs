@@ -66,6 +66,7 @@ namespace SSI.FastConnect.Client
                     ConsumerID = _id,
                     ConsumerSecret = _secret
                 };
+                
                 var postJsonItem = new StringContent(JsonConvert.SerializeObject(accessTokenRequest), Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(_url + ApiDefineV2.AccessToken, postJsonItem);
 

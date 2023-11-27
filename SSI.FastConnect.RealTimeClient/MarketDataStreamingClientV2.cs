@@ -36,11 +36,10 @@ namespace SSI.FastConnect.RealTimeClient
         }
         private async void CreateHubClient(string accessToken, CancellationToken cancellationToken = default)
         {
-            _logger?.Information("Create hub connection with accesssToken: {0}", accessToken);
+            _logger?.Information("Create hub connection with accessToken: {0}", accessToken);
             _hubConnection = new HubConnection(_url);
             _hubConnection.Headers.Add("Authorization", "Bearer " + accessToken);
             _hubProxy = _hubConnection.CreateHubProxy(HUB_NAME);
-
 
             _hubProxy.On<string>("Broadcast", On_Broadcast);
             _hubProxy.On<string>("Error", On_Error);
@@ -50,7 +49,7 @@ namespace SSI.FastConnect.RealTimeClient
         {
             ReconnectTimer = new Timer((state) =>
             {
-                _logger?.Information("Reconect to FcData stream!");
+                _logger?.Information("Reconnect to FcData stream!");
                 Start().Wait();
             }, null, seconds * 1000, Timeout.Infinite);
         }
@@ -78,7 +77,7 @@ namespace SSI.FastConnect.RealTimeClient
             }
             catch (Exception ex)
             {
-                _logger?.Error(ex, "Failed to proccess On_StateChanged event");
+                _logger?.Error(ex, "Failed to process On_StateChanged event");
             }
         }
         public async Task SwitchChannels(string filterCondition)
@@ -112,6 +111,7 @@ namespace SSI.FastConnect.RealTimeClient
         }
         public async Task Start(CancellationToken cancellationToken = default)
         {
+            
             var accessToken = await _authenticationProvider.GetAccessToken();
             CreateHubClient(accessToken, cancellationToken);
             await _hubConnection.Start(new WebSocketTransport());

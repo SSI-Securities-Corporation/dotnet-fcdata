@@ -4,10 +4,10 @@ using SSI.FastConnect.DataContracts.Enums;
 namespace SSI.FastConnect.DataContracts.Market.Request
 {
     [DataContract]
-    public class DailyOHLCRequest
+    public class IntradayByTickRequest
     {
         [DataMember(Order = 1, Name = "Symbol")]
-        [HelpDescription("Input Index ID or Instrument Symbol to get data. Including Stock, Derivatives, CW", true)]
+        [HelpDescription("Symbol of the security, Include Stock, CW and Derivatives", true)]
         public string Symbol { get; set; }
 
         [DataMember(Order = 2, Name = "FromDate")]
@@ -26,20 +26,16 @@ namespace SSI.FastConnect.DataContracts.Market.Request
         [HelpDescription("Size of a page, 10; 20; 50; 100; 1000 Default 10 ", false)]
         public int PageSize { get; set; } = 10;
 
-        public DailyOHLCRequest GetSample()
+        public IntradayByTickRequest GetSample()
         {
-            return new DailyOHLCRequest
+            return new IntradayByTickRequest
             {
-                Symbol = "SSI",
+                Symbol = "SAMPLE",
                 FromDate = "11/11/2019",
                 ToDate = "11/12/2019",
                 PageIndex = 1,
-                PageSize = 100,
-                ascending = false
+                PageSize = 100
             };
         }
-
-        [DataMember(Order = 6, Name = "ascending")]
-        public bool ascending { set; get; } = false;
     }
 }

@@ -8,7 +8,7 @@ namespace SSI.FastConnect.Client.Models
 {
     public class AccessTokenRequest
     {
-        public string ConsumerID { get; set; }
-        public string ConsumerSecret { get; set; }
+        public string ConsumerID;
+        public string ConsumerSecret;
     }
 }

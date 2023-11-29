@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.Client", "SSI.FastConnect.Client\SSI.FastConnect.Client.csproj", "{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FCData.Client", "SSI.FCData.Client\SSI.FCData.Client.csproj", "{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.DataContract", "SSI.FastConnect.DataContracts\SSI.FastConnect.DataContract.csproj", "{ABB876DC-3BFB-479E-954E-62EA885C15BB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSI.FastConnect.RealTimeClient", "SSI.FastConnect.RealTimeClient\SSI.FastConnect.RealTimeClient.csproj", "{FB112479-5AEA-41C6-AB22-167C09C8A371}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetClientUnitTest", "DotnetClientTest\DotnetClientUnitTest.csproj", "{A07C99B3-B125-4EBB-A54A-389C22CB4264}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSI.FCData.ClientExample", "SSI.FCData.ClientExample\SSI.FCData.ClientExample.csproj", "{DB910D36-AF8F-438A-8784-D7A9B2258AAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +17,10 @@ Global
 		{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2475134D-CA7C-4CBA-9FF9-FE92285FA07B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABB876DC-3BFB-479E-954E-62EA885C15BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABB876DC-3BFB-479E-954E-62EA885C15BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABB876DC-3BFB-479E-954E-62EA885C15BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABB876DC-3BFB-479E-954E-62EA885C15BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB112479-5AEA-41C6-AB22-167C09C8A371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB112479-5AEA-41C6-AB22-167C09C8A371}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB112479-5AEA-41C6-AB22-167C09C8A371}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB112479-5AEA-41C6-AB22-167C09C8A371}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A07C99B3-B125-4EBB-A54A-389C22CB4264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A07C99B3-B125-4EBB-A54A-389C22CB4264}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A07C99B3-B125-4EBB-A54A-389C22CB4264}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A07C99B3-B125-4EBB-A54A-389C22CB4264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB910D36-AF8F-438A-8784-D7A9B2258AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB910D36-AF8F-438A-8784-D7A9B2258AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB910D36-AF8F-438A-8784-D7A9B2258AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB910D36-AF8F-438A-8784-D7A9B2258AAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

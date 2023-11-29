@@ -1,5 +1,17 @@
 # FastConnect Data dotNet client Changelog
 
+# [2.0.0](https://github.com/SSI-Securities-Corporation/dotnet-fcdata/compare/v1.0.0...v2.0.0) (2023-11-29)
+
+
+### Documentation
+
+* update readme ([f3feff0](https://github.com/SSI-Securities-Corporation/dotnet-fcdata/commit/f3feff0d865fd4a9774576f726bd0fc9ac9c0a33))
+
+
+### BREAKING CHANGES
+
+* Bump version
+
 # [1.0.0](https://github.com/SSI-Securities-Corporation/dotnet-fcdata/compare/v0.0.1...v1.0.0) (2023-11-29)
 
 

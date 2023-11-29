@@ -52,8 +52,8 @@ jobs:
       - name: ZIP target directory
         run: |
           mkdir target
-          zip -r target/fc-trading-win64.net.zip fc-trading.net
-          zip -r target/fc-trading-linux64.net.zip fc-trading-linux.net
+          zip -r target/fc-data-win64.net.zip fc-data.net
+          zip -r target/fc-data-linux64.net.zip fc-data-linux.net
  
       - name: Semantic Release
         if: steps.semantic.outputs.new_release_published == 'true'
